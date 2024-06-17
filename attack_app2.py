@@ -469,13 +469,13 @@ def propagation_probabilistic_smart(begin, G, q, resist, alpha, prob, nbr, nbr_s
                 liste2 = []
                 ### voisins non résistants
                 for j in neighbors:
-                    if j  not in resist:
+                    if (state[j] == 0):
                         list1.append(j)
                 ### nombre de voisins des voisins
                 for i in list1:
                     list_smart= []
                     for j in (list(G.neighbors(i))):
-                        if j  not in resist:           
+                        if (state[j] == 0):           
                             list_smart.append(j)
                     table_neigh.append(len(list_smart))
                 

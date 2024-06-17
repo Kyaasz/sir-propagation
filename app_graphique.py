@@ -444,8 +444,7 @@ def nb_hps(event=None):
         
 
 
-
-def choix_strat(event=None):
+def choix_type_strat(event=None): 
     global nb_hs
     global nb_h
     val = shps.get()
@@ -458,17 +457,66 @@ def choix_strat(event=None):
         labelhps.pack_forget()
         shps.pack_forget()
         boutonhps.pack_forget()
-        labels.pack()
-        boutons1.pack()
-        boutons2.pack()
-        label_prop.pack()
-        entreestrat.pack()
-        boutons3.pack()
-        boutons4.pack()
-        boutons5.pack()
-        boutons6.pack()
-        boutonsv.pack()
-        boutonsv.focus_set()
+        labelts.pack()
+        boutonts1.pack()
+        boutonts2.pack()
+        boutontsv.pack()
+        boutontsv.focus_set()
+
+
+def choix_strat(event=None):
+    val = valuets.get()
+    if val not in ["1", "2"]:
+        show_message()
+    else: 
+        labelts.pack_forget()
+        boutonts1.pack_forget()
+        boutonts2.pack_forget()
+        boutontsv.pack_forget()
+        if val =="1":
+            labels.pack()
+            boutons1.pack()
+            boutons2.pack()
+            label_prop.pack()
+            entreestrat.pack()
+            boutons3.pack()
+            boutonsv.pack()
+            boutonsv.focus_set()
+        else:
+            labels.pack()
+            boutons4.pack()
+            boutons5.pack()
+            boutons6.pack()
+            boutonsv.pack()
+            boutonsv.focus_set()
+
+
+
+
+#def choix_strat(event=None):
+#    global nb_hs
+#    global nb_h
+#    val = shps.get()
+#    val_int = int(val)
+#    if (val_int > nb_h):
+#        label_error5.pack()
+#     else:
+  #      nb_hs = val_int
+   #     label_error5.pack_forget()
+    #    labelhps.pack_forget()
+     ##   shps.pack_forget()
+       # boutonhps.pack_forget()
+       # labels.pack()
+       # boutons1.pack()
+        #boutons2.pack()
+        #label_prop.pack()
+      #  entreestrat.pack()
+       # boutons3.pack()
+        #boutons4.pack()
+        #boutons5.pack()
+        #boutons6.pack()
+        #boutonsv.pack()
+        #boutonsv.focus_set()
 
 
 def fin(event=None):
@@ -642,10 +690,23 @@ boutonhp.bind("<Return>", nb_hps)
 
 ## nb smart honeypots
 
-labelhps = Label(fenetre, text="Entrer le nombre de smart honeypots")
+labelhps = Label(fenetre, text="Combien de ces honeypots adopteront la stratégie intelligente ? \n Les autres honeypots adopteront la stratégie naïve")
 shps = Spinbox(fenetre, from_=0, to=500)
-boutonhps = Button(fenetre, text="Valider", command=choix_strat)
-boutonhps.bind("<Return>", choix_strat)
+boutonhps = Button(fenetre, text="Valider", command=choix_type_strat)
+boutonhps.bind("<Return>", choix_type_strat)
+
+
+## choix du type de stratégie
+labelts = Label(fenetre, text="Choisir le type de stratégie souhaité")
+valuets = StringVar()
+valuets.set("")
+boutonts1 = Radiobutton(fenetre, text="Utiliser une stratégie de propagation basique", variable = valuets, value=1)
+boutonts2 = Radiobutton(fenetre, text= "Utiliser une stratégie de propagation qui priorise les noeuds de haut degré", variable=valuets, value=2)
+boutonts1.bind("<Return>", activation_radio)
+boutonts2.bind("<Return>", activation_radio)
+boutontsv = Button(fenetre, text = "Valider", command=choix_strat) 
+boutontsv.bind("<Return>", choix_strat)
+
 ## choix de la stratégie
 
 labels = Label(fenetre, text="Choisir la stratégie de propagation")
@@ -653,13 +714,13 @@ values = StringVar()
 values.set("")
 value_strat = StringVar()
 value_strat.set("")
-boutons1 = Radiobutton(fenetre, text="Propagation unicast : un pour un", variable=values, value=1)
-boutons2 = Radiobutton(fenetre, text="Propagation multicast : proportion à définir", variable=values, value=2)
+boutons1 = Radiobutton(fenetre, text="Propagation unicast : un pour un \n(chaque noeud infecte un de ses voisins aléatoirement)", variable=values, value=1)
+boutons2 = Radiobutton(fenetre, text="Propagation multicast : proportion à définir \n(chaque noeud infecte une proportion de ses voisins)", variable=values, value=2)
 label_prop = Label(fenetre, text= "Entrer la proportion de voisins infectés")
-boutons3 = Radiobutton(fenetre, text="Propagation broadcast : un pour tous", variable=values, value=3)
-boutons4 = Radiobutton(fenetre, text=" Propagation propagation_deterministic_smart : un pour un (noeud de plus grand degré)", variable=values, value=4)
-boutons5 = Radiobutton(fenetre, text="Propagation propagation_probabilistic_smart", variable=values, value=5)
-boutons6 = Radiobutton(fenetre, text=" Propagation multicast_smart : un pour tous les noeuds de plus grand degré", variable=values, value=6)
+boutons3 = Radiobutton(fenetre, text="Propagation broadcast : un pour tous \n(chaque noeud infecte la totalité de ses voisins)", variable=values, value=3)
+boutons4 = Radiobutton(fenetre, text=" Propagation propagation_deterministic_smart : un pour un \n(chaque noeud infecte son voisin de plus grand degré)", variable=values, value=4)
+boutons5 = Radiobutton(fenetre, text="Propagation propagation_probabilistic_smart \n(chaque noeud infecte tous ses voisins de plus grand degré et une proportion des autres)", variable=values, value=5)
+boutons6 = Radiobutton(fenetre, text=" Propagation multicast_smart : un pour tous les noeuds de plus grand degré \n(chaque noeud infecte tous ses voisins de plus grand degré)", variable=values, value=6)
 boutons1.bind("<Return>", activation_radio)
 boutons2.bind("<Return>", activation_radio)
 boutons3.bind("<Return>", activation_radio)
