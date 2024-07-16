@@ -131,17 +131,7 @@ class animated :
             self.colors_edge[n] = self.hospot_colors
         self.append_animation() 
         
-    #def push_defence_inv(self,data,liste_edge):
-        
-    #    for n in data:
-    #        self.colors[n] = self.used_colors
-            
-    #    for i in liste_edge : 
-    #        self.colors_edge[i]= self.used_colors
-    #        self.widths[i] = self.used_width
-            
-        
-    #    self.append_animation() 
+
                 
     
     def push_res(self,data):
@@ -160,9 +150,7 @@ class animated :
             self.colors_edge[n] = self.hospot_colors
         self.append_animation() 
         
-     #def push_def(self,list):
-    #    for n in list:
-    #        self.colors[n] = self.init_color
+
                
             
     def push_IS(self,data,edge,hosp):

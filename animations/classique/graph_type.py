@@ -5,7 +5,6 @@ from time import time
 from turtle import left, width
 import matplotlib.animation
 from IPython.display import HTML
-
 import math
 import random
 from functools import partial

@@ -6,7 +6,20 @@ import matplotlib.pyplot as plt
 import numpy
 import networkx as nx
 
-
+################################################################################################
+# Simule la propagation du virus avec la première dynamique de propagation : chaque noeud      #
+# infecté transmet le virus à un de ses voisins susceptibles tiré aléatoirement                #
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################
+            
 def propagation_unicast(begin, G, q, resist, alpha, prob, nbr, nbr_smart):
         
     state = [0] * G.number_of_nodes() ### Tous les noeuds sont initialement susceptibles
@@ -115,6 +128,20 @@ def propagation_unicast(begin, G, q, resist, alpha, prob, nbr, nbr_smart):
         q.hospot_anime(honeypot1)
 
 
+################################################################################################
+# Simule la propagation du virus avec la deuxième dynamique de propagation : chaque noeud      #
+# infecté transmet le virus à une proportion de ses voisins                                    #
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - P : proportion des voisins à infecter                                                      #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################
 def propagation_probability(begin,G,q,resist,alpha,prob,nbr,P,nbr_smart):
        
     state = [0] * G.number_of_nodes() ### Tous les noeuds sont initialement susceptibles
@@ -211,6 +238,19 @@ def propagation_probability(begin,G,q,resist,alpha,prob,nbr,P,nbr_smart):
         q.hospot_anime(honeypot1)
 
 
+################################################################################################
+# Simule la propagation du virus avec la troisième dynamique de propagation : chaque noeud     #
+# infecté transmet le virus à tous ses voisins                                                 #
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################
 def propagation_broadcast(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
         
     state = [0] * G.number_of_nodes() ### Tous les noeuds sont initialement susceptibles
@@ -304,7 +344,20 @@ def propagation_broadcast(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
         honeypot1 = honey_pot(G,nodes_out,nodes_in,resist,liste_edge,liste_resist,nbr,nbr_smart)
         q.hospot_anime(honeypot1)
 
-                
+
+################################################################################################
+# Simule la propagation du virus avec la quatrième dynamique de propagation : chaque noeud     #
+# infecté transmet le virus à son voisin susceptible de plus haut degré                        #
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################             
 def propagation_deterministic_smart(begin,G,q,resist,alpha,prob,nbr,nbr_smart):                
           
        
@@ -326,7 +379,7 @@ def propagation_deterministic_smart(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
     q.step_state(state)
     
     
-    while any(x in state for x in (0, 1)):
+    while any(x in state for x in (1,0)):
         print("nouveau tour")
         liste = [0] * len(state)
         liste_SR = [0] * len(state)
@@ -420,7 +473,20 @@ def propagation_deterministic_smart(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
         honeypot1 = honey_pot(G,nodes_out,nodes_in,resist,liste_edge,liste_resist,nbr,nbr_smart)
         q.hospot_anime(honeypot1)          
 
-                
+
+################################################################################################
+# Simule la propagation du virus avec la cinquième dynamique de propagation : chaque noeud     #
+# infecté transmet le virus à tous ses voisins de degré max et à un nombre aléatoire des autres#
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################              
 def propagation_probabilistic_smart(begin, G, q, resist, alpha, prob, nbr, nbr_smart):
        
     state = [0] * G.number_of_nodes() ### Tous les noeuds sont initialement susceptibles
@@ -555,7 +621,20 @@ def propagation_probabilistic_smart(begin, G, q, resist, alpha, prob, nbr, nbr_s
         honeypot1 = honey_pot(G,nodes_out,nodes_in,resist,liste_edge,liste_resist,nbr,nbr_smart)
         q.hospot_anime(honeypot1)          
             
-           
+
+################################################################################################
+# Simule la propagation du virus avec la sixième dynamique de propagation : chaque noeud       #
+# infecté transmet le virus à tous ses voisins de degré max                                    #
+# Inputs :                                                                                     #
+# - begin : liste des noeuds infectés au début de la simulation                                #
+# - G : graphe                                                                                 #
+# - q : queue pour l'animation                                                                 #
+# - resist : noeuds résistants au début de la simulation                                       #
+# - alpha : proba de faire S -> R                                                              #
+# - prob : proba de faire I -> S                                                               #
+# - nbr : nombre de honeypots                                                                  #
+# - nbr_smart : nombre de ces honeypots qui sont intelligents                                  #
+################################################################################################   
 def propagation_broadcast_smart(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
 
     state = [0] * G.number_of_nodes() ### Tous les noeuds sont initialement susceptibles
@@ -669,7 +748,15 @@ def propagation_broadcast_smart(begin,G,q,resist,alpha,prob,nbr,nbr_smart):
 
 
 
-### Retourne les aretes de liste_node qui ne sont pas résistantes
+################################################################################################
+# Retourne les aretes de liste_node qui ne sont pas résistantes                                #
+# Inputs :                                                                                     #
+# - G : graphe                                                                                 #
+# - liste_node : liste des noeuds nouvellement défendus                                        #
+# - liste_resist : liste des arêtes résistantes (liées à un noeud résistant)                   #
+# Outputs :                                                                                    #
+#  : arêtes non résistantes reliées aux noeuds défendus                                        #
+################################################################################################
 def edge_def(G, liste_node, liste_resist):
     edge_def =[]
     for i in liste_node:
@@ -680,7 +767,17 @@ def edge_def(G, liste_node, liste_resist):
     return  edge_def
 
 
-### Calcul des nouveaux noeuds résistants (S -> R)
+################################################################################################
+# Calcul des nouveaux noeuds résistants (S -> R)                                               #
+# Inputs :                                                                                     #
+# - G : graphe                                                                                 #
+# - state : liste des états de tous les  noeuds                                                #
+# - liste : liste des états courants de tous les noeuds                                        #
+# - alpha : probabilité de faire S -> R                                                        #
+# - resist : liste des noeuds résistatns                                                       #
+# Outputs :                                                                                    #
+#  - liste des noeuds résistants mise à jour                                                   #
+################################################################################################
 def  Suscep_Resist(G, state, liste, alpha, resist):
     nv_resist = []
     for n in G.nodes:
@@ -692,7 +789,15 @@ def  Suscep_Resist(G, state, liste, alpha, resist):
     resist.extend(nv_resist) 
 
 
-### Noeuds infectés du départ
+################################################################################################
+# Mise à jour des états des noeuds infectés au départ                                          #
+# Inputs :                                                                                     #
+# - G : graphe                                                                                 #
+# - state : liste des états de tous les  noeuds                                                #
+# - begin : liste des noeuds infectés au départ                                                #
+# Outputs :                                                                                    #
+# - liste des états mise à jour                                                                #
+################################################################################################
 def begin_node(begin, state, G):
     for i in begin:  
         state[i] = 1
@@ -700,6 +805,15 @@ def begin_node(begin, state, G):
     return state    
 
 
+################################################################################################
+# Met à jour les états des noeuds résistants et renvoie les arêtes résistantes                 #
+# Inputs :                                                                                     #
+# - G : graphe                                                                                 #
+# - state : liste des états de tous les  noeuds                                                #
+# - resist : liste des noeuds résistatns                                                       #
+# Outputs :                                                                                    #
+# - liste des états mise à jour et la liste des arêtes résistantes                             #
+################################################################################################
 ### Traitement des noeuds résistants de départ + retour des index des aretes liant un sommet résistant et un de ses voisins
 def resist_list(resist, state, G):
     list_edge = []
@@ -710,6 +824,21 @@ def resist_list(resist, state, G):
     return list_edge
 
 
+################################################################################################
+# Mise en place des honeypots/IDS                                                              #
+# Inputs :                                                                                     #
+# - G : graphe                                                                                 #
+# - nodes_out : noeuds qui ont tenté d'infecter au tour d'avant                                #
+# - nodes_in : noeuds qui ont été infectés et défendus au tour d'avant                         #
+# - resist : liste des noeuds résistatns                                                       #
+# - list_edge : liste des arêtes attaquées au tour d'avant                                     #
+# - liste_resit : liste des arêtes résistantes                                                 # 
+# - nbr_honey : nombre de honeypots                                                            #
+# - nbr_honey_smart : nombre de honeypots smarts                                               #
+# - state : liste des états de tous les  noeuds                                                #
+# Outputs :                                                                                    #
+# - liste des arêtes où les honeypots ont été mis en place                                     #
+################################################################################################
 ### Honey pot 
 def honey_pot(G,nodes_out,nodes_in,resist,list_edge,liste_resist,nbr_honey,nbr_honey_smart):
     edge_total =[]
