@@ -1,23 +1,9 @@
 import networkx as nx
-import matplotlib.pyplot as plt
-from re import U
-from time import time
-from turtle import left, width
-import matplotlib.animation
-from IPython.display import HTML
 import math
 import random
-from functools import partial
+from scipy.spatial import Delaunay
 
 
-# Cliquer à gauche pour voir ou masquer le code
-
-import matplotlib.animation
-from IPython.display import HTML
-from scipy.spatial import Delaunay, Voronoi, voronoi_plot_2d
-import shapely.geometry as geom
-import math
-import random
 
 
 def gen_in_disk(size):

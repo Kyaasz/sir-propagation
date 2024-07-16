@@ -2,8 +2,6 @@
 ############################ Imports ##############################
 ###################################################################
 import time
-from timeit import repeat
-from numpy import block, size
 from matplotlib.animation import writers
 import attack_app2
 import animation_attack

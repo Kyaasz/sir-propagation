@@ -1,8 +1,5 @@
-from calendar import c
 import math
 import random
-from re import U
-import matplotlib.pyplot as plt
 import numpy
 
 

@@ -1,12 +1,3 @@
-#from time import time
-#import matplotlib.animation
-#import random
-#import attack
-from matplotlib.colors import ListedColormap, LinearSegmentedColormap
-
-import matplotlib.pyplot as plt
-import numpy as np
-
 
 class animated : 
     def __init__(self, G):

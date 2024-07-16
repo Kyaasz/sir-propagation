@@ -2,31 +2,17 @@
 ############################ Imports ##############################
 ###################################################################
 from time import time
-from timeit import repeat
-from numpy import block, size
+from numpy import size
 from matplotlib.animation import writers
 import attack_app
 import animation_attack
 import graph_type
 import networkx as nx
 from IPython.display import HTML
-import random
-from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 import matplotlib.colors
 import matplotlib.pyplot as plt
-import time
 from matplotlib import gridspec
-import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-import random
-from itertools import count
-from IPython import display
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-import matplotlib.pyplot as plt #plotting
-from datetime import datetime, timedelta #data creation 
-from celluloid import Camera #animation
 plt.style.use('seaborn-v0_8')
 
 

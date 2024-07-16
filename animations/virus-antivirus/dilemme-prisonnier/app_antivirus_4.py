@@ -18,7 +18,6 @@ import virus_antivirus_propagation
 import copy
 from tkinter import filedialog
 import os
-from matplotlib.lines import Line2D
 
 
 #####################################################################
