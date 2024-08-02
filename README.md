@@ -1,9 +1,3 @@
-3 dossiers : 
-- classique = propagation de base avec hp :
-              - app1 comme avec l'ancienne stagiaire
-              - app_graphique pour l'interface
-- competing-malware : propagation de deux virus type dynamique d'opinion
-                      - app_competing pour le lancer
-- virus-antivirus : deux dossiers à l'intérieur pour les deux animations différentes :
-                      - classique = virus/antivirus (fichier app_antivirus)
-                      - dilemme-prisonnier = 4 animations en parallèle (fichier app_antivirus_4)
+Ce répertoire Github contient l'ensemble des documents/codes intéressants de mon stage. 
+\\
+Différents fichiers README.txt peuvent aider à la compréhension du dossier. On peut y retrouver des rapports d'études, les différents codes, les manuels d'utilisation pour les différents simulateurs ainsi que des documents de travail annexes.
