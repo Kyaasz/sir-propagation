@@ -1,0 +1,14 @@
+resultats : 0.3*n_edges
+resultats2 : 0.1*n_edges
+resultats3 : 0.08*n_edges
+resultats4 : 0.08*n_edges + ajout d'autres valeurs
+res7 : premier fichier généré parallele
+dans les fichiers suivants : honeypot fixé à 5% du nb d'aretes et 0 smart
+res8 : fichier res en parallele sur un unique graphe (3000 données)
+res9 : fichier res en parallele sur un unique graphe (600 données)
+res10 : fichier res en parallele sur un unique graphe (300 données)
+res11 : fichier res en parallele sur un unique graphe (60000 données)
+res12 : fichier res en parallele sur un unique graphe avec nb honeypot aleatoire entre 0 
+et 8% du nb d'aretes et nb de smart entre 0 et la moitié du nombre de honeypots (9600 données)
+res14 : fichier res parallele, graphe tiré aléatoirement, nb honeypots aleatoire entre 0 
+et 8% du nb d'aretes et nb de smart entre 0 et la moitié du nombre de honeypots avec tout type de propagation 
