@@ -10,7 +10,7 @@ import numpy
 
 def propagation_unicast(begin, G, q, resist, alpha, prob, nbr, nbr_smart):
         
-   for n in range(1):  ### ?????????????????????????? pq
+   for n in range(1):  
         l1=[]  ### pour le honeypot
         state = [0 for i in range(len(G.nodes))] ### Tous les noeuds sont initialement susceptibles
         liste_neighbors= [] ### liste des voisins
@@ -121,7 +121,7 @@ def propagation_unicast(begin, G, q, resist, alpha, prob, nbr, nbr_smart):
                         if (state[n]==1):
                             state[n]=(numpy.random.choice([0,1], p=[prob,(1-prob)]))
                             if (state[n]== 0):
-                                G.nodes[n]['visited'] = False ### choix discutable 
+                                G.nodes[n]['visited'] = False
                                 liste_IS[n]==1
                                 node_IS.append(n)
                     #print(node_IS)
